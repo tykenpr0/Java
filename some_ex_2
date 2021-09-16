@@ -1,0 +1,62 @@
+
+public class pierwsza{
+        public static void main(String[] argv){
+                for(int i=99;i>1;i--){
+                        double p=Math.sqrt(i);
+                        boolean s=true;
+                        for(int j=(int)p;j>1;j--){
+                                if(i%j==0){
+                                        s=false;
+                                        break;
+                                }
+                        }
+
+                        if(s)
+                        System.out.println(i+ "-liczba pierwsza");
+                }
+        System.out.println("DRUGA METODA");
+        System.out.println();
+        int N=Integer.parseInt(argv[0]);
+        int tab[]=new int[N];
+        for(int i=0;i<N;i++){
+                tab[i]=i;
+        }
+
+        for(int i=2;i<Math.sqrt(N);i++){
+                if(tab[i]!=0){
+                        for(int j=i;j<N;j++){
+                                if(j==i)
+                                        continue;
+                                else if(j%i==0)
+                                        tab[j]=0;
+                        }
+                }
+        }
+        for(int i=0;i<N;i++){
+                if(tab[i]!=0)
+        System.out.println(+tab[i]);
+}
+System.out.println("TRZECIA METODA");
+System.out.println("TRZECIA METODA");
+boolean S[]=new boolean[N];
+for(int i=2;i<=N;i++)
+        S[i]=true;
+        int p=2;
+                while(p*p<=N){
+                int q=p;
+                        while(p*q<=N){
+                        int x=p*q;
+                                while(x<=N){
+                                        S[x]=false;
+                                        x=p*x;
+                                }
+                                        while(!S[++q]);
+                        }
+                        while(!S[++p]);
+                }
+for(int i=2;i<=N;i++){
+if(S[i])
+System.out.println(i);
+}
+}
+}
