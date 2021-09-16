@@ -1,0 +1,64 @@
+import java.util.Random;
+class Tyczynski_Macierz{
+        int tab2d[][];
+
+        Tyczynski_Macierz(int a,boolean b){
+                tab2d=new int[a][a];
+                if(b){
+                for(int i=0;i<a;i++){
+                                tab2d[i][i]=1;
+                }
+        }
+}
+        Tyczynski_Macierz(int a, int b, boolean c){
+                                Random r=new Random();
+                        tab2d=new int[a][a];
+                                if(c){
+                                        for(int i=0;i<a;i++){
+                                                for(int j=i;j<a;j++){
+                                                        tab2d[i][j]=tab2d[j][i]=r.nextInt(b);
+
+                                        }
+                                }
+                        }
+                        else{
+                        for(int i=0;i<a;i++){
+                                for(int j=0;j<a;j++){
+                                        tab2d[i][j]=r.nextInt(b);
+                                        }
+                                }
+                                }
+        }
+        Tyczynski_Macierz(Tyczynski_Macierz ob){
+                System.arraycopy(tab2d,0,ob.tab2d,0,tab2d.length);
+        }
+                Tyczynski_Macierz suma(Tyczynski_Macierz ob){
+                        for(int i=0;i<tab2d.length;i++){
+                                for(int j=0;j<tab2d[i].length;j++){
+                                        ob.tab2d[i][j]+=tab2d[i][j];
+                                }
+                        }
+                return ob;
+                }
+                Tyczynski_Macierz iloczyn(Tyczynski_Macierz ob){
+                        Tyczynski_Macierz M= new Tyczynski_Macierz(tab2d.length,false);
+                        int suma=0;
+                        for(int i=0;i<tab2d.length;i++){
+                                for(int j=0;j<tab2d.length;j++){
+                                        for(int k=0;k<tab2d[j].length;k++){
+                                                suma+=(tab2d[i][k]*ob.tab2d[k][j]);
+                                        }
+                                        M.tab2d[i][j]=suma;
+                                        suma=0;
+                                }
+                        }
+                return M;
+                }
+                void wypisanie(){
+                        for(int[] j: tab2d){
+                                System.out.println("");
+                                for(int i: j)
+                                System.out.print(i+" ");
+                                }
+                }
+}
