@@ -1,0 +1,45 @@
+class MiejsceZerowe extends Funkcja implements Interfejs{
+        static double x0;
+        static int iter;
+        static double bisekcja(Funkcja f,double a,double b,double c){
+                x0=(a+b)/2;
+                iter=0;
+                while(Math.abs(f.f(x0))>c)
+                {
+                        iter++;
+                        if(f.f(a)*f.f(x0)<0)
+                                b=x0;
+                        else if(f.f(b)*f.f(x0)<0)
+                                a=x0;
+
+                        x0=(a+b)/2;
+                }
+                return x0;
+        }
+        static double sieczna(Funkcja f,double a,double b,double c){
+                x0=a-f.f(a)*((b-a)/(f.f(b)-f.f(a)));
+                iter=0;
+                while(Math.abs(f.f(x0))>c)
+                {
+                        iter++;
+                        if(f.f(a)*f.f(x0)<0)
+                                b=x0;
+                        else if(f.f(b)*f.f(x0)<0)
+                                a=x0;
+
+                        x0=a-f.f(a)*((b-a)/(f.f(b)-f.f(a)));
+                }
+                return x0;
+        }
+        static double styczna(Funkcja f,double a, double b, double c){
+                x0=a-(c/((f.f(a+c)/f.f(a))-1));
+                iter=0;
+                while(Math.abs(f.f(x0))>c)
+                {
+                        iter++;
+                        a=x0;
+                        x0=a-(c/((f.f(a+c)/f.f(a))-1));
+                }
+                return x0;
+        }
+}
