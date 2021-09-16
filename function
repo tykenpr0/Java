@@ -1,0 +1,37 @@
+
+class Wektor_Tyczynski{
+        private int x,y,z;
+        Wektor_Tyczynski(int x,int y,int z){
+                this.x=x;
+                this.y=y;
+                this.z=z;
+                }
+        Wektor_Tyczynski(Wektor_Tyczynski ob){
+                this.x=ob.x;
+                this.y=ob.y;
+                this.z=ob.z;
+                }
+
+        double dlugosc(){
+                return Math.sqrt(x*x+y*y+z*z);
+        }
+        Wektor_Tyczynski suma(Wektor_Tyczynski ob){
+                return new Wektor_Tyczynski(x+ob.x,y+ob.y,z+ob.z);
+                }
+        Wektor_Tyczynski mnozenie(int a){
+                return new Wektor_Tyczynski(x*a,y*a,z*a);
+                }
+        double iloczyn_skalarny(Wektor_Tyczynski ob){
+                return x*ob.x+y*ob.y+z*ob.z;
+        }
+        Wektor_Tyczynski iloczyn_wektorowy(Wektor_Tyczynski ob){
+                return new Wektor_Tyczynski(y*ob.z-z*ob.y,x*ob.z-z*ob.x,x*ob.y-y*ob.x);
+                }
+        double iloczyn_mieszany(Wektor_Tyczynski ob1,Wektor_Tyczynski ob2){
+                return iloczyn_skalarny(ob1.iloczyn_wektorowy(ob2));
+                }
+
+         public String toString(){
+                return "["+x+","+y+","+z+"]";
+                }
+}
